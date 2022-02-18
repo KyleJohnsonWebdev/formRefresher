@@ -42,7 +42,7 @@ const AddUser = (props) => {
   return (
     <div>
       <div className={classes.backdrop}>
-        <ErrorModal title="an Error Occured!" message="Something went wrong" />
+        {error && <ErrorModal title={error.title} message={error.message} />}
         <Card className={classes.input}>
           <form onSubmit={addUserHandler}>
             <label htmlFor="username">Username</label>
