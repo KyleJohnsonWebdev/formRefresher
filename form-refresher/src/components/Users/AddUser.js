@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Card from "../UI/Card";
 import classes from "./AddUser.module.css";
 import Button from "../UI/Button";
@@ -6,13 +6,19 @@ import ErrorModal from "../UI/ErrorModal";
 import Wrapper from "../Helpers/Wrapper";
 
 const AddUser = (props) => {
-  const [enteredUsername, setEnteredUsername] = useState("");
-  const [enteredAge, setEnteredAge] = useState("");
+  //Set up a connection between an HTML element and our other
+  // javascript code. Can only be used in functional components.
+  const nameInputRef = useRef();
+  const ageInputRef = useRef();
+
   const [error, setError] = useState();
 
   const addUserHandler = (event) => {
     event.preventDefault();
-    if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
+    //Set value you received from the ref
+    const enteredName = nameInputRef.current.value;
+    const enteredUserAge = ageInputRef.current.value;
+    if (enteredName.trim().length === 0 || enteredUserAge.trim().length === 0) {
       setError({
         title: "Invalid input",
         message: "Please enter a valid name and age (no empty values).",
@@ -20,7 +26,7 @@ const AddUser = (props) => {
       return;
     }
     // by putting a plus in front of the string, it ensures it is an int.
-    if (+enteredAge < 1) {
+    if (+enteredUserAge < 1) {
       setError({
         title: "Invalid Age",
         message: "Please enter a valid age (must be greater than zero).",
@@ -28,17 +34,11 @@ const AddUser = (props) => {
       return;
     }
     // need to lift up the state to the app.js component
-    props.onAddUser(enteredUsername, enteredAge);
-    setEnteredUsername("");
-    setEnteredAge("");
+    props.onAddUser(enteredName, enteredUserAge);
+    nameInputRef.current.value = "";
+    ageInputRef.current.value = "";
   };
 
-  const usernameChangeHandler = (event) => {
-    setEnteredUsername(event.target.value);
-  };
-  const ageChangeHandler = (event) => {
-    setEnteredAge(event.target.value);
-  };
   const errorHandler = () => {
     setError(null);
   };
@@ -56,19 +56,9 @@ const AddUser = (props) => {
         <Card className={classes.input}>
           <form onSubmit={addUserHandler}>
             <label htmlFor="username">Username</label>
-            <input
-              id="username"
-              value={enteredUsername}
-              type="text"
-              onChange={usernameChangeHandler}
-            />
+            <input id="username" type="text" ref={nameInputRef} />
             <label htmlFor="age">Age (years)</label>
-            <input
-              id="age"
-              type="number"
-              value={enteredAge}
-              onChange={ageChangeHandler}
-            />
+            <input id="age" type="number" ref={ageInputRef} />
             <Button type="submit">Add User</Button>
           </form>
         </Card>
