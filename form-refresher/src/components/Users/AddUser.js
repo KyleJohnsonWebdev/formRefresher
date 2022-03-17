@@ -6,8 +6,9 @@ import ErrorModal from "../UI/ErrorModal";
 import Wrapper from "../Helpers/Wrapper";
 
 const AddUser = (props) => {
-  //Set up a connection between an HTML element and our other
+  //Refs set up a connection between an HTML element and our other
   // javascript code. Can only be used in functional components.
+  // uncontrolled metod as inputs on ref are not controlled by react
   const nameInputRef = useRef();
   const ageInputRef = useRef();
 
