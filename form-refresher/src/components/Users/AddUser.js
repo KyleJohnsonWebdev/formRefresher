@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import Card from "../UI/Card";
 import classes from "./AddUser.module.css";
-import Button from "../UI/Button";
+import Button from "../UI/button";
 import ErrorModal from "../UI/ErrorModal";
 import Wrapper from "../Helpers/Wrapper";
 
