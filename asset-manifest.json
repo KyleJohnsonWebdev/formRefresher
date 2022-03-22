@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/formRefresher/static/css/main.be86b7d9.css",
+    "main.js": "/formRefresher/static/js/main.8765dc9f.js",
+    "static/js/787.2e32234a.chunk.js": "/formRefresher/static/js/787.2e32234a.chunk.js",
+    "index.html": "/formRefresher/index.html",
+    "main.be86b7d9.css.map": "/formRefresher/static/css/main.be86b7d9.css.map",
+    "main.8765dc9f.js.map": "/formRefresher/static/js/main.8765dc9f.js.map",
+    "787.2e32234a.chunk.js.map": "/formRefresher/static/js/787.2e32234a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.be86b7d9.css",
+    "static/js/main.8765dc9f.js"
+  ]
+}
